@@ -9,7 +9,7 @@ namespace SpotifyWrapper.validation
     {
         public bool Validate(IRequest request)
         {
-            return request != null && request.RequestType != null;
+            return request != null;
         }
     }
 }

@@ -22,10 +22,7 @@ namespace SpotifyWrapper.concrete
             {
                return process.Process(request);
             }
-            else
-            {
-                return validationResponseMessage;
-            }
+            return validationResponseMessage;
         }
     }
 }

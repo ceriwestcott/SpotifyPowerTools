@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web.Models;
 using SpotifyWrapper.interfaces;
 using SpotifyWrapper.validation;
 
@@ -8,12 +10,19 @@ namespace SpotifyWrapper.concrete
 {
     public class GetPlaylistProcess : IProcess
     {
+        private readonly IValidator validator;
+        private SpotifyWebAPI spotifyWebApi;
+        public GetPlaylistProcess(IValidator validator, SpotifyWebAPI spotifyWebApi)
+        {
+            this.validator = validator;
+            this.spotifyWebApi = spotifyWebApi;
+        }
+
         public IResponseMessage Validate(IRequest request)
         {
             IResponseMessage responseMessage = new ReponseMessage();
             try
             {
-                IValidator validator = new Validator();
                 validator.AddRule(new NotNullRule());
 
                 if (validator.ValidateRequest(request)) 
@@ -31,6 +40,9 @@ namespace SpotifyWrapper.concrete
         public IResponseMessage Process(IRequest request)
         {
             GetPlaylistRequest concreteRequest = request as GetPlaylistRequest;
+            FullPlaylist retVal = spotifyWebApi.GetPlaylist(concreteRequest.PlaylistUri);
+
+            return null;
         }
     }
 }
