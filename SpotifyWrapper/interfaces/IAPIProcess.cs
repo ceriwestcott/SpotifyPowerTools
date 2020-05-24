@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpotifyWrapper.interfaces
 {
-    interface IAPIProcess
+    public interface IAPIProcess
     {
         IResponseMessage RunCommand<T>(IRequest request);
     }

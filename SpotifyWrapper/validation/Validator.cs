@@ -8,10 +8,10 @@ namespace SpotifyWrapper.validation
     public class Validator : IValidator
     {
         private List<IValidationRule> validationRules = new List<IValidationRule>();
-        public IValidationRule AddRule(IValidationRule rule)
+        public IValidator AddRule(IValidationRule rule)
         {
             validationRules.Add(rule);
-            return rule;
+            return this;
         }
 
         public bool ValidateRequest(IRequest request)

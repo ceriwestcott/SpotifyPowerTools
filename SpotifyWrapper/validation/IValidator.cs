@@ -7,7 +7,7 @@ namespace SpotifyWrapper.validation
 {
     public interface IValidator
     {
-        IValidationRule AddRule(IValidationRule rule);
+        IValidator AddRule(IValidationRule rule);
         bool ValidateRequest(IRequest request);
     }
 }

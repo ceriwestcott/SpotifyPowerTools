@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using SpotifyWrapper.interfaces;
+using SpotifyWrapper.Process;
 
 namespace SpotifyWrapper.concrete
 {
@@ -23,6 +24,8 @@ namespace SpotifyWrapper.concrete
                     return services.First(x => x.GetType() == typeof(GetPlaylistProcess));
                 case RequestType.CLEAR_PLAYLIST:
                     return services.First(x => x.GetType() == typeof(ClearPlaylistProcess));
+                case RequestType.REORDER:
+                    return services.First(x => x.GetType() == typeof(ReorderProcess))
                     break;
             }
             return null;

@@ -20,7 +20,10 @@ namespace SpotifyWrapper.Mapper
                 .ForMember(to => to.StatusCode,
                     from =>
                         from.MapFrom(
-                            playlistResponse => (playlistResponse.HasError() ? Status.FAILURE : Status.SUCCESS)));
+                            playlistResponse => (playlistResponse.HasError() ? Status.FAILURE : Status.SUCCESS)))
+
+                .ForMember(to => to.Playlist,
+                    from => from.MapFrom(reponse => reponse));
         }
     }
 }
